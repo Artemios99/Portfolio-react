@@ -1,5 +1,9 @@
 import { useState } from 'react'
+import Nav from './Nav'
+import About from './About'
 import ProjectCard from './ProjectCard'
+import Contact from './Contact'
+import Footer from './Footer'
 import './App.css'
 
 const projects = [
@@ -12,19 +16,32 @@ function App() {
 
   return (
     <div className={darkMode ? 'dark-mode' : ''}>
-      <h1>Το Portfolio μου</h1>
-      <button onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-      </button>
-      <h2>Projects</h2>
-      {projects.map((project) => (
-      <ProjectCard
-        key={project.title}
-        title={project.title}
-        description={project.description}
-        link={project.link}
-      />
-      ))}
+      <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+
+      <header>
+        <h1>Artemios Kousiappas</h1>
+        <p>Web Developer</p>
+      </header>
+
+      <main>
+        <About />
+
+        <section id="projects">
+          <h2>Projects</h2>
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              link={project.link}
+            />
+          ))}
+        </section>
+
+        <Contact />
+      </main>
+
+      <Footer />
     </div>
   )
 }
