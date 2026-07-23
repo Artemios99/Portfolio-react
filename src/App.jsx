@@ -2,6 +2,11 @@ import { useState } from 'react'
 import ProjectCard from './ProjectCard'
 import './App.css'
 
+const projects = [
+  { title: 'Unibite', description: 'Website για διαμοιρασμό φαγητού', link: '#' },
+  { title: 'Patras Limani', description: 'Application για καλύτερη εξυπηρέτηση λιμανιού', link: '#' },
+]
+
 function App() {
   const [darkMode, setDarkMode] = useState(false)
 
@@ -12,16 +17,14 @@ function App() {
         {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
       </button>
       <h2>Projects</h2>
+      {projects.map((project) => (
       <ProjectCard
-        title="Unibite"
-        description="Website για διαμοιρασμό φαγητού"
-        link="#"
+        key={project.title}
+        title={project.title}
+        description={project.description}
+        link={project.link}
       />
-      <ProjectCard
-        title="Patras Limani"
-        description="Application για καλύτερη εξυπηρέτηση λιμανιού"
-        link="#"
-      />
+      ))}
     </div>
   )
 }
